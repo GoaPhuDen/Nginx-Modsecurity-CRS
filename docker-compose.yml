@@ -1,12 +1,14 @@
-version: '3'
+version: '2'
 
 services:
    modsec:
-     image: wisoez/nginx-modsecurity-crs
+     image: "wisoez/nginx-modsecurity-crs:latest"
      volumes:
-       - /data/nginx/conf.d:/etc/nginx/conf.d
-       - /data/nginx/log:/var/log
+       - "/data/nginx/conf.d:/etc/nginx/conf.d"
+       - "/data/nginx/log:/var/log/nginx"
+       - "/data/modsec/log:/var/log/modsec"
+     restart: "always"
      ports:
        - "80:80"
        - "443:443"
-     restart: always
+
