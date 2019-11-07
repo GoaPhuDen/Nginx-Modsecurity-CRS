@@ -1,6 +1,6 @@
 #!/bin/bash
 # Deploy:      Nginx reverse proxy + Modsecurity + OWASP Core Rules
-# Author:      ThaoPT - thaopt@peacesoft.net
+# Author:      ThaoPT - thaopt@nextsec.vn
 # Last update: 06/11/2019
 
 mkdir -p /data/nginx/conf.d/ssl
