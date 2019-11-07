@@ -57,10 +57,7 @@ server {
 EOL
 
 cat > docker-compose.yml << EOL
-line 1, ${kernel}
-line 2, 
-line 3, ${distro}
-line 4 line
+
 version: '3'
 
 services:
