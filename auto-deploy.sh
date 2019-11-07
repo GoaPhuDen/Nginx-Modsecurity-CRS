@@ -50,7 +50,7 @@ server {
 
         #Reverse proxy
         location / {
-             proxy_pass         http://WEB-APP-IP:PORT;
+             proxy_pass         http://10.0.0.8:8080;
              include /etc/nginx/proxy.conf;
              }
 }
