@@ -25,7 +25,7 @@ server {
 	
 #	# SSL
 #	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
-#	ssl_certificate_key /etc/nginx/ssl/www.doamin.com.pri.key;
+#	ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
 
 #	return 301 https://doamin.com$request_uri;
 
@@ -45,8 +45,8 @@ server {
         sub_filter_once on;
         include /etc/nginx/general.conf;
 
-#        ssl_certificate /etc/nginx/conf.d/ssl/certificate/sub.domain.com.crt;
-#       ssl_certificate_key /etc/nginx/conf.d/ssl/certificate/sub.domain.com.key;
+#    	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
+#	    ssl_certificate_key /etc/nginx/ssl/www.doamin.com/www.doamin.com.pri.key;
 
         #Reverse proxy
         location / {
