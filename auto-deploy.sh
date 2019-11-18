@@ -34,8 +34,8 @@ server {
 
 
 server {
-#       listen 443 ssl;   #Bỏ # khi dùng SSL
-		listen 8080
+#       listen 443 ssl;  # khi enable dùng cert
+		listen 8080;	 # khi khong dung cert;
         server_name     sub.domain.com;
 
         access_log      /var/log/nginx/sub.domain.com_access.log main;
