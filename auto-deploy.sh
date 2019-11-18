@@ -34,7 +34,8 @@ server {
 
 
 server {
-        listen 443 ssl;
+#       listen 443 ssl;   #Bỏ # khi dùng SSL
+		listen 8080
         server_name     sub.domain.com;
 
         access_log      /var/log/nginx/sub.domain.com_access.log main;
