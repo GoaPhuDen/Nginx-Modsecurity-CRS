@@ -43,7 +43,7 @@ server {
 
         sub_filter http://sub.domain.com https://sub.domain.com;
 		sub_filter http://www.domain.com https://www.domain.com;
-        sub_filter_once on;
+        sub_filter_once off;
         include /etc/nginx/general.conf;
 
 #    	ssl_certificate /etc/nginx/ssl/www.doamin.com/www.domain.com.crt;
