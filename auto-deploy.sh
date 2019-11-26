@@ -54,6 +54,13 @@ server {
              proxy_pass         http://10.0.0.8:8080;
              include /etc/nginx/proxy.conf;
              }
+		#Browser cache
+		location ~*  \.(jpg|jpeg|png|gif|ico|css|js|pdf)$ {
+             proxy_pass       http://10.0.0.8:8080;
+             include /etc/nginx/proxy.conf;
+             expires 30d;
+        }
+
 }
 
 
