@@ -26,6 +26,8 @@ RUN apk add --no-cache --virtual .build-deps \
         flex \
         bison \
         yajl-dev \
+		patch \
+		make \
     # Add runtime dependencies that should not be removed
     && apk add --no-cache \
         doxygen \
@@ -35,7 +37,6 @@ RUN apk add --no-cache --virtual .build-deps \
         libstdc++ \
         git \
         sed \
-		patch \
         libmaxminddb-dev
 
 WORKDIR /opt/ModSecurity
@@ -57,7 +58,7 @@ RUN echo 'Installing ModSec - Nginx connector' && \
 WORKDIR /tmp
 
 RUN echo 'Clone Healthcheck - Nginx connector' && \
-    git clone --depth 1 https://github.com/yaoweibin/nginx_upstream_check_module.git
+    cd /tmp/ && git clone --depth 1 https://github.com/yaoweibin/nginx_upstream_check_module.git
 
 
 WORKDIR /opt/GeoIP
@@ -69,11 +70,11 @@ WORKDIR /opt/nginx-$NGINX_VERSION
 RUN ./configure --with-compat --add-dynamic-module=../ModSecurity-nginx  --add-dynamic-module=../GeoIP && \
     make modules && \
     cp objs/ngx_http_modsecurity_module.so objs/ngx_http_geoip2_module.so /etc/nginx/modules
-	
-RUN patch -p1 /tmp/nginx_http_upstream_check_module/check.patch && \
-	./configure --add-module=/tmp/nginx_http_upstream_check_module && \
-    make && \
-	make install
+
+RUN /usr/bin/patch -p1 < /tmp/nginx_upstream_check_module/check.patch && \
+	./configure --add-module=/tmp/nginx_upstream_check_module && \
+    /usr/bin/make && \
+	/usr/bin/make install
 
 WORKDIR /opt
 

@@ -26,6 +26,8 @@ RUN apk add --no-cache --virtual .build-deps \
         flex \
         bison \
         yajl-dev \
+		patch \
+        make \
     # Add runtime dependencies that should not be removed
     && apk add --no-cache \
         doxygen \
@@ -97,5 +99,6 @@ RUN apk del .build-deps && \
     rm -fr GeoIp && \
     rm -fr nginx-$NGINX_VERSION.tar.gz && \
     rm -fr nginx-$NGINX_VERSION
+	rm -rf /opt/*.gz
 
 WORKDIR /usr/share/nginx/html
