@@ -9,6 +9,16 @@ mkdir -p /data/modsec/log
 
 cat > /data/nginx/conf.d/demo.conf << EOL
 
+
+# App cluster
+upstream clusterapp {
+            #least_conn;
+            #ip_hash;
+	    # default round-robin
+            server 192.168.11.76:8081 max_fails=1  fail_timeout=3s;
+            server 192.168.11.76:8082 max_fails=1  fail_timeout=3s;
+        }
+
 #HTTP redirect
 server {
         listen  80;
@@ -51,7 +61,7 @@ server {
 
         #Reverse proxy
         location / {
-             proxy_pass         http://10.0.0.8:8080;
+             proxy_pass         http://clusterapp;
              include /etc/nginx/proxy.conf;
              }
 		#Browser cache
